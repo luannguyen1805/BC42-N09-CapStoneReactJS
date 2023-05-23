@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "./MovieList.css";
 
+
 function MovieList(){
   const settings = {
     dots: true,
@@ -57,23 +58,26 @@ function MovieList(){
               height: "100%",
             }}
           >
-            <div className="border-solid border-indigo-900 hover:border-indigo-500 m-3 p-1 rounded-md">
+            <div className="border-solid border-indigo-900 hover:border-indigo-500 m-3 pb-8">
               <img
-                className="h-72 max-w-full object-cover object-left-top mx-auto"
+                className="h-72 w-full max-w-full object-cover object-left-top mx-auto"
                 alt=""
                 src={item.hinhAnh}
               />
-              <h2 className="text-xl text-center">
+              <h2 className="text-xl text-center text">
                 {item.tenPhim}
               </h2>
               <p className="m-1">
+              <i class="fa-regular fa-square-check m-1"></i>
                 Khởi Chiếu:{" "}
                 {moment(item.ngayKhoiChieu).format("DD/MM/YYYY h:mm a")}
               </p>
-              <p className="m-1">Đánh giá: {item.danhGia}/10</p>
-              <div className="mt-5 text-right text-center">
+              <p className="m-1">
+              <i class="fa-regular fa-square-check m-1"></i>
+              Đánh giá: {item.danhGia}/10</p>
+              <div className="mt-5 text-center">
                 <Link to={`/detail/${item.maPhim}`}>
-                  <Button className="text-center" style={{padding:"10px", fontSize:"16px"}}>
+                  <Button className="text-center font-bold" style={{background:"#cd6a22",color:"#ffff", padding:"5px 20px",height: "40px", fontSize:"16px"}}>
                     Đặt vé
                   </Button>
                 </Link>

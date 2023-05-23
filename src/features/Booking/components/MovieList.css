@@ -1,9 +1,12 @@
 .slick-dots {
-  color: #f1f9f5;
+  color: #f55322;
   font-size: 1.1rem;
 }
 .slick-active .slick-dots {
   color: #8958fc;
   font-weight: bold;
   font-size: 1.15rem;
+}
+.text{
+color: #0e264a;
 }

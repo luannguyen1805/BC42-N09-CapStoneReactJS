@@ -123,13 +123,13 @@ function Footer() {
             <img src="../img/logo.png" alt="thongbaobct" width={100} height={100} />
           </div>
           <div style={{ color: "#ccc", fontSize: "12px" }}>
-            <h1 style={{ fontSize: "16px", marginBottom: "5px" }}>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</h1>
+            <h1 style={{ fontSize: "16px", marginBottom: "5px" }}>DDMEDIA – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN DDMEDIA</h1>
             <p style={{ marginBottom: "5px" }}>
-              Địa chỉ:Phường Tân Thuận Đông, Quận 7, Tp. Hồ Chí Minh, Việt Nam.
+              Địa chỉ:Nguyễn Quý Đức - Thanh Xuân - Hà Nội.
             </p>
             <p style={{ marginBottom: "5px" }}>Giấy chứng nhận đăng ký kinh doanh số: 0101659783,</p>
             <p style={{ marginBottom: "5px" }}>
-              đăng ký thay đổi lần thứ 30, ngày 30 tháng 02 năm 2023 do Sở kế hoạch và đầu tư Thành phố Hồ Chí Minh cấp.
+              đăng ký thay đổi lần thứ 30, ngày 30 tháng 02 năm 2023 do Sở kế hoạch và đầu tư Thành phố Hà Nội cấp.
             </p>
             <p>Số Điện Thoại (Hotline): 1900 090 090</p>
           </div>
