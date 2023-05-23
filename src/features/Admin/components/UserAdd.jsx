@@ -1,11 +1,9 @@
 import { Button, Input, Select, Form, Spin } from "antd";
 import React from "react";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUserAction, fetchAllUserInfo } from "../redux/action";
-import actions from "../redux/type";
 
 function UserAdd(){
   const [form] = Form.useForm();

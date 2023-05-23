@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, DatePicker, Form, InputNumber, Select } from "antd";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   fetchCinemas,
   fetchDetail,
@@ -22,13 +21,6 @@ function SetSchedule (props) {
   const movieDetail = useSelector((state) => state.admin.movieDetail);
   const cinemas = useSelector((state) => state.admin.cinemas);
   const [cinemaCluster, setCinemaCluster] = useState([]);
-
-  //handle form
-  // const onFinish = (values) => {
-  //   let formData = JSON.stringify(values);
-  //   console.log(formData);
-  //   dispatch(setMovieScheduleAction(values));
-  // };
 
   const formik = useFormik({
     initialValues: {

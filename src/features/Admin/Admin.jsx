@@ -1,9 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchCinemas, fetchMovies } from "./redux/action";
 import { LaptopOutlined, UserOutlined } from "@ant-design/icons";
-import { Tabs, Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu } from "antd";
 import { NavLink, Outlet } from "react-router-dom";
 
 const { Content, Sider } = Layout;

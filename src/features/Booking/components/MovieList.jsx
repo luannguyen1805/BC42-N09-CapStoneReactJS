@@ -1,13 +1,14 @@
-import { Col, Card, Button } from "antd";
+import {Card, Button, Modal } from "antd";
 import moment from "moment/moment";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import "./MovieList.css";
 
+function MovieList() {
+  const [visible, setVisible] = React.useState(false);
+  const [trailerUrl, setTrailerUrl] = React.useState("");
 
-function MovieList(){
   const settings = {
     dots: true,
     infinite: false,
@@ -43,51 +44,94 @@ function MovieList(){
     ],
     customPaging: (i) => <div className="mt-10 slick-dots">{i + 1}</div>,
   };
+
   const movies = useSelector((state) => state.booking.movies);
+
+  const handleOpenModal = (trailer) => {
+    setTrailerUrl(trailer);
+    setVisible(true);
+  };
+
   return (
     <div className="container mx-auto mb-10">
-      <h2 className="text-4xl text-center font-medium">
-        Danh sách phim
-      </h2>
+      <h2 className="text-4xl text-center font-medium">Danh sách phim</h2>
       <Slider {...settings}>
         {movies.map((item) => (
-          <div
-            key={item.maPhim}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <div className="border-solid border-indigo-900 hover:border-indigo-500 m-3 pb-8">
-              <img
-                className="h-72 w-full max-w-full object-cover object-left-top mx-auto"
-                alt=""
-                src={item.hinhAnh}
+          <div key={item.maPhim}>
+            <Card
+              hoverable
+              className="m-3 pb-8"
+              cover={
+                <img
+                  className="h-72 w-full max-w-full  object-left-top mx-auto"
+                  alt=""
+                  src={item.hinhAnh}
+                />
+              }
+            >
+              <Card.Meta
+                title={item.tenPhim}
+                description={
+                  <div>
+                    <p className="m-1">
+                      <i className="fa-regular fa-square-check m-1"></i>
+                      Khởi Chiếu:{" "}
+                      {moment(item.ngayKhoiChieu).format("DD/MM/YYYY h:mm a")}
+                    </p>
+                    <p className="m-1">
+                      <i className="fa-regular fa-square-check m-1"></i>
+                      Đánh giá: {item.danhGia}/10
+                    </p>
+                  </div>
+                }
               />
-              <h2 className="text-xl text-center text">
-                {item.tenPhim}
-              </h2>
-              <p className="m-1">
-              <i class="fa-regular fa-square-check m-1"></i>
-                Khởi Chiếu:{" "}
-                {moment(item.ngayKhoiChieu).format("DD/MM/YYYY h:mm a")}
-              </p>
-              <p className="m-1">
-              <i class="fa-regular fa-square-check m-1"></i>
-              Đánh giá: {item.danhGia}/10</p>
               <div className="mt-5 text-center">
                 <Link to={`/detail/${item.maPhim}`}>
-                  <Button className="text-center font-bold" style={{background:"#cd6a22",color:"#ffff", padding:"5px 20px",height: "40px", fontSize:"16px"}}>
+                  <Button
+                    className="text-center font-bold bg-sky-800 text-slate-200 mr-2"
+                    style={{
+                      padding: "5px 20px",
+                      height: "40px",
+                      fontSize: "16px",
+                    }}
+                  >
                     Đặt vé
                   </Button>
                 </Link>
+                <Button
+                  className="text-center font-bold bg-sky-600 text-slate-200"
+                  style={{
+                    padding: "5px 20px",
+                    height: "40px",
+                    fontSize: "16px",
+                  }}
+                  onClick={() => handleOpenModal(item.trailer)}
+                >
+                  Trailer
+                </Button>
               </div>
-            </div>
+            </Card>
           </div>
         ))}
       </Slider>
+      <Modal
+        title="Xem Trailer"
+        visible={visible}
+        onCancel={() => setVisible(false)}
+        footer={null}
+        width={800} 
+      >
+        <iframe
+          width="100%"
+          height="600"
+          src={trailerUrl}
+          title="Trailer"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+      </Modal>
     </div>
   );
-};
+}
 
 export default MovieList;

@@ -1,4 +1,5 @@
 import { Button, Tabs } from "antd";
+import TabPane from "antd/es/tabs/TabPane";
 import moment from "moment";
 import React from "react";
 import { useEffect } from "react";
@@ -6,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCinemaSchedule } from "../redux/action";
 
-function CinemaSchedule(){
+function CinemaSchedule() {
   const dispatch = useDispatch();
   const cinemas = useSelector((state) => state.booking.cinemas);
   useEffect(() => {
@@ -20,7 +21,7 @@ function CinemaSchedule(){
       </h2>
       <Tabs
         tabPosition="left"
-        className="text-slate-600"
+        className="text-slate-600 "
         onChange={(key) => {
           dispatch(fetchCinemaSchedule(key));
         }}
@@ -34,65 +35,64 @@ function CinemaSchedule(){
             ),
             children: cinemaSchedule.length > 0 && (
               <Tabs
-                className="text-slate-600 overflow-y-auto h-100 "
+                className="text-slate-600 h-100 "
                 tabPosition="left"
-                items={cinemaSchedule[0].lstCumRap.map((itemCinema) => {
-                  return {
-                    key: itemCinema.maCumRap,
-                    label: (
-                      <div
-                        className="w-96 text-left border-neutral-600"
-                        style={{ borderBottom: "solid 1px" }}
-                      >
-                        <p className="font-semibold text-lg ">
-                          {itemCinema.tenCumRap}
-                        </p>
-                        <p>{itemCinema.diaChi}</p>
-                      </div>
-                    ),
-                    children: itemCinema.danhSachPhim.map((itemMovies) => (
-                      <div
-                        className="flex items-center border-neutral-500 pb-3"
-                        style={{ borderBottom: "solid 1px" }}
-                        key={itemMovies.maPhim}
-                      >
-                        <div className="info mr-4 w-1/6">
-                          <h1 className="font-semibold text-lg text-center text-indigo-100">
-                            {itemMovies.tenPhim}
-                          </h1>
-                          <img
-                            alt=""
-                            src={itemMovies.hinhAnh}
-                            className="w-full"
-                          />
+              >
+                {cinemaSchedule[0].lstCumRap.map((itemCinema) => {
+                  return (
+                    <TabPane
+                    className="text-slate-600 overflow-y-auto h-100 "
+                      tab={
+                        <div
+                          className="w-96 text-left border-neutral-600"
+                          style={{ borderBottom: "solid 1px" }}
+                        >
+                          <p className="font-semibold text-lg ">{itemCinema.tenCumRap}</p>
+                          <p>{itemCinema.diaChi}</p>
                         </div>
-                        <div className="schedule w-5/6 ">
-                          {itemMovies.lstLichChieuTheoPhim.map(
-                            (itemMovieSchedule) => (
+                      }
+                      key={itemCinema.maCumRap}
+                    >
+                      {itemCinema.danhSachPhim.map((itemMovies) => (
+                        <div
+                          className="flex items-center border-neutral-500 pb-3"
+                          style={{ borderBottom: "solid 1px" }}
+                          key={itemMovies.maPhim}
+                        >
+                          <div className="info mr-4 w-1/6">
+                            <h1 className="font-semibold text-lg text-center text-indigo-600">
+                              {itemMovies.tenPhim}
+                            </h1>
+                            <img alt="" src={itemMovies.hinhAnh} className="w-full" />
+                          </div>
+                          <div className="schedule w-5/6 ">
+                            {itemMovies.lstLichChieuTheoPhim.map((itemMovieSchedule) => (
                               <Link
                                 to={`/booking/${itemMovieSchedule.maLichChieu}`}
                                 key={itemMovieSchedule.maLichChieu}
                               >
-                                <Button className="bg-indigo-900 text-slate-200 m-1">
-                                  {moment(
-                                    itemMovieSchedule.ngayChieuGioChieu
-                                  ).format("DD/MM/YYYY ~ HH:mm")}
+                                <Button className="bg-sky-900 text-slate-100 m-1">
+                                  {moment(itemMovieSchedule.ngayChieuGioChieu).format(
+                                    "DD/MM/YYYY ~ HH:mm"
+                                  )}
                                 </Button>
                               </Link>
-                            )
-                          )}
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )),
-                  };
+                      ))}
+                    </TabPane>
+                  );
                 })}
-              />
+              </Tabs>
             ),
           };
         })}
       />
     </div>
   );
+
+
 };
 
 export default CinemaSchedule;

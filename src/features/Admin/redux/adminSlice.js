@@ -6,7 +6,7 @@ const initialState = {
   cinemas: [],
   movieDetail: null,
   allUser: null,
-  // profileById: null,
+
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -27,9 +27,7 @@ const reducer = (state = initialState, { type, payload }) => {
       case actions.SET_PROFILE_BY_ID:
         draft.profileById = payload;
         break;
-      // case actions.SET_SEARCH_BY_ID:
-      //   draft.profileById = payload;
-      //   break;
+
 
       default:
         return state;

@@ -2,7 +2,6 @@ import React from "react";
 import { Button, DatePicker, Form, Input, Rate, Switch } from "antd";
 import { useDispatch } from "react-redux";
 import { createMovieAction } from "../redux/action";
-import moment from "moment";
 import { useFormik } from "formik";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
@@ -43,7 +42,6 @@ function AddMovie(){
         } else {
           formData.append("hinhAnh", values.hinhAnh);
         }
-        // console.log(`${key}:`, formData.get(key));
       }
       await dispatch(createMovieAction(formData));
       navigate("/admin/movieManage");

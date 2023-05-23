@@ -1,14 +1,9 @@
 import { Button, Form, Input, Select, Spin } from "antd";
-import Item from "antd/es/list/Item";
-import { fetchProfileAction } from "features/Login/redux/action";
-import { current } from "immer";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  deleteProfileByIdAction,
   editUserAction,
-  fetchAllUserInfo,
   fetchProfileByIdAction,
 } from "../redux/action";
 import actions from "../redux/type";

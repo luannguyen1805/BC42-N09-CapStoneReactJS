@@ -93,10 +93,7 @@ const MovieEdit = (props) => {
             name: ["ngayKhoiChieu"],
             value: moment(movieDetail.ngayKhoiChieu, "DD/MM/YYYY"),
           },
-          // {
-          //   name: ["hinhAnh"],
-          //   value: movieDetail && movieDetail.hinhAnh,
-          // },
+
         ]}
       >
         {/* MovieID */}

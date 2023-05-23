@@ -1,5 +1,5 @@
 import { DeleteFilled, EditFilled } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input, Space, Table } from "antd";
+import { Button, Form, Input, Space, Table } from "antd";
 import { useForm } from "antd/es/form/Form";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,8 +19,6 @@ function UserManage() {
   const handleSearchUser = (value) => {
     dispatch(searchUserAction(value.tuKhoa, value.MaNhom));
   };
-  // const handleResetLayout = () => {
-  // };
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     dispatch(fetchAllUserInfo());

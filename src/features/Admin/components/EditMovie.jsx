@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Button, DatePicker, Form, Input, Rate, Switch } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDetail, updateMovieAction } from "../redux/action";
-import moment from "moment";
 import { useFormik } from "formik";
 import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";

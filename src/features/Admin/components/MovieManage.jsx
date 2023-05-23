@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Space, Table } from "antd";
 import { DeleteFilled, ScheduleFilled, EditFilled } from "@ant-design/icons";
 import SetSchedule from "./SetSchedule";
-// import MovieEdit from "./MovieEdit";
 import { deleteSeletedMovie, fetchMovies } from "../redux/action";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -100,15 +99,6 @@ function MovieManage() {
                 }}
               />
             </Button>
-            {/* <Button
-              className="bg-red-800 text-white border-white hover:border-red-600 hover:text-red-600 hover:bg-neutral-800"
-              onClick={() => {
-                showModal();
-                setMovieId(item.maPhim);
-              }}
-            >
-              Edit ko formik
-            </Button> */}
           </Space>
         </div>
       ),
@@ -120,19 +110,6 @@ function MovieManage() {
     <div>
       <div className="my-5"></div>
       <Table columns={columns} dataSource={data} />
-      {/* <Modal
-        open={isModalOpen}
-        onCancel={handleCancel}
-        width="80%"
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Close
-          </Button>,
-        ]}
-      >
-        <MovieEdit movieId={movieId} />
-      </Modal> */}
-
       <Modal
         open={isModalOpen1}
         onCancel={handleCancel}

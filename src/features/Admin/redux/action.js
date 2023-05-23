@@ -1,4 +1,4 @@
-import requestor, { requestorUser } from "app/api";
+import { requestor, requestorUser } from "app/api";
 import { apiPath } from "app/apiPath";
 import actions from "./type";
 
